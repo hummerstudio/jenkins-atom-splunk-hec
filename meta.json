@@ -1,0 +1,12 @@
+{
+  "name": "Splunk HEC event",
+  "summary": "Sends one build event to a Splunk HTTP Event Collector and checks its verdict.",
+  "author": "hummerstudio",
+  "license": "MIT",
+  "tags": [
+    "official-port",
+    "splunk",
+    "metrics"
+  ],
+  "homepage": "https://github.com/hummerstudio/jenkins-atom-splunk-hec"
+}

@@ -1,0 +1,82 @@
+{
+  "atomCode": "splunk-hec",
+  "name": "Splunk HEC event",
+  "version": "1.0.0",
+  "description": "Sends one build event to a Splunk HTTP Event Collector and checks its verdict.",
+  "execution": {
+    "packagePath": "splunk-hec.jar",
+    "language": "java",
+    "target": "$atom_java_path -cp splunk-hec.jar com.jenkinschina.atom.sdk.AtomRunner"
+  },
+  "input": {
+    "url": {
+      "label": "Splunk 地址（含端口，如 https://splunk:8088）",
+      "type": "vuex-input",
+      "default": ""
+    },
+    "token": {
+      "label": "HEC token",
+      "type": "password",
+      "default": ""
+    },
+    "sourcetype": {
+      "label": "sourcetype",
+      "type": "vuex-input",
+      "default": "jenkins"
+    },
+    "source": {
+      "label": "source",
+      "type": "vuex-input",
+      "default": "jenkins"
+    },
+    "host": {
+      "label": "host（留空由 Splunk 决定）",
+      "type": "vuex-input",
+      "default": ""
+    },
+    "channel": {
+      "label": "channel（留空则不带）",
+      "type": "vuex-input",
+      "default": ""
+    },
+    "event": {
+      "label": "事件内容（JSON 或 key=value；留空用构建事实）",
+      "type": "textarea",
+      "default": ""
+    },
+    "mode": {
+      "label": "模式（event / raw）",
+      "type": "vuex-input",
+      "default": "event"
+    },
+    "timeoutSeconds": {
+      "label": "超时（秒）",
+      "type": "vuex-input",
+      "default": "30"
+    }
+  },
+  "output": {
+    "code": {
+      "type": "string",
+      "description": "HEC 返回码（0 = 已接收）"
+    },
+    "text": {
+      "type": "string",
+      "description": "HEC 返回文本"
+    },
+    "bytes": {
+      "type": "string",
+      "description": "发出的字节数"
+    },
+    "endpoint": {
+      "type": "string",
+      "description": "实际请求的端点"
+    }
+  },
+  "x-jenkins": {
+    "protocol": "jenkins-1",
+    "requires": {
+      "runner": ">=0.4.0"
+    }
+  }
+}
